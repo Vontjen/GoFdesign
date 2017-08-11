@@ -37,7 +37,7 @@ public class XMLBuilder extends ConversionBuilder {
 
     }
 
-    // kan in dit geval in abstarcte klasse, maar zou NIET werken als het outputfomatgeen textbestand is
+    // kan in dit geval in abstracte klasse, maar zou NIET werken als het outputformat geen textbestand is
     public String getResult(){
         return builder.toString();
     }

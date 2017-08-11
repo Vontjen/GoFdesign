@@ -36,7 +36,7 @@ public class HTMLBuilder extends ConversionBuilder {
          builder.append("\t\t</table>\n\t</body>\n</html>");
 
     }
-    // kan in dit geval in abstarcte klasse, maar zou NIET werken als het outputfomatgeen textbestand is
+    // kan in dit geval in abstracte klasse, maar zou NIET werken als het outputformat geen textbestand is
     public String getResult(){
         return builder.toString();
     }
