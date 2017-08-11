@@ -10,7 +10,6 @@ public class XMLBuilder extends ConversionBuilder {
                 "<message>\n") ;
     }
 
-
     @Override
     void convertSender(String sender) {
          builder.append("\t<From>"+sender+"</from>\n");

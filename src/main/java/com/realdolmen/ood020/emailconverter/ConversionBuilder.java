@@ -16,7 +16,4 @@ public abstract class ConversionBuilder {
 
     abstract void close();
 
-
-
-
 }

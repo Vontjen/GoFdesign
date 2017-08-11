@@ -10,25 +10,12 @@ public class EmailConverter {
 
     public void convertEmail(Email email){
 
-
-
-
             xb.init(email.getSubject());
             xb.convertSender(email.getSender());
             xb.convertReceiver(email.getReceiver());
             xb.convertSubject(email.getSubject());
             xb.convertBody(email.getBody());
             xb.close();
-
-
-
-
-
-
-
-
-
-
 
     }
 }

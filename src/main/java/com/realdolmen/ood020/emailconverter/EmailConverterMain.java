@@ -16,6 +16,5 @@ public class EmailConverterMain {
         em2.convertEmail(email);
         System.out.println(hb.getResult());
 
-
     }
 }
