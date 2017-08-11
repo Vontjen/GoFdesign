@@ -37,6 +37,8 @@ public class FerryFrame extends JFrame implements ActionListener {
 
 	private Ferry theFerry;
 
+	private VehicleCreator vc = new TruckFactory();
+
 	public FerryFrame(String title, Ferry f) {
 		super(title);
 
@@ -146,14 +148,14 @@ public class FerryFrame extends JFrame implements ActionListener {
 			String reg = regNo.getText();
 			int noPass = Integer.parseInt(passChoice.getSelectedItem());
 
-			if (checkboxes[0].isSelected()) {
-				v = new Vehicle(noPass, reg);
-				added = theFerry.addVehicle(v);
-			} else {
-				berths = Integer.parseInt(berthsChoice.getSelectedItem());
-				v = new Truck(noPass, reg, berths);
-				added = theFerry.addVehicle(v);
-			}
+			berths = Integer.parseInt(berthsChoice.getSelectedItem());
+
+			v = vc.createVehicle(checkboxes[0].isSelected()?VehicleTypes.car:VehicleTypes.truck,noPass, reg, berths );
+
+            added = theFerry.addVehicle(v);
+
+
+
 			if (added)
 				warning.setText("Vehicle added successfully");
 			else
