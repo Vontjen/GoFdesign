@@ -29,7 +29,8 @@ public class FerryFrame extends JFrame implements ActionListener {
 	ButtonGroup cbg;
 	JCheckBox[] checkboxes;
 
-	protected JMenuBar menubar1;
+
+    protected JMenuBar menubar1;
 	protected JMenu menu1;
 	protected JMenuItem quit;
 	protected JMenuItem empty;
@@ -37,7 +38,9 @@ public class FerryFrame extends JFrame implements ActionListener {
 
 	private Ferry theFerry;
 
-	private VehicleCreator vc = new TruckFactory();
+	private VehicleCreator vc = new VehicleCreatorImpl();
+
+	boolean sidecar;
 
 	public FerryFrame(String title, Ferry f) {
 		super(title);
@@ -81,11 +84,13 @@ public class FerryFrame extends JFrame implements ActionListener {
 		regNo.addActionListener(this);
 
 		cbg = new ButtonGroup(); // to make them mutually exclusive
-		checkboxes = new JCheckBox[2];
+		checkboxes = new JCheckBox[3];
 		checkboxes[0] = new JCheckBox("Car", true);
 		checkboxes[1] = new JCheckBox("Truck", false);
+		checkboxes[2] = new JCheckBox("Bike", false);
 		cbg.add(checkboxes[0]);
 		cbg.add(checkboxes[1]);
+		cbg.add(checkboxes[2]);
 
 		passChoice = new Choice();
 		passChoice.addItem("1");
@@ -124,12 +129,12 @@ public class FerryFrame extends JFrame implements ActionListener {
 		panel1.add(typeLabel);
 		panel1.add(checkboxes[0]);
 		panel1.add(checkboxes[1]);
+		panel1.add(checkboxes[2]);
 		panel1.add(panel6);
 		panel1.add(panel2);
 		panel1.add(panel3);
 		panel1.add(warning);
 		panel1.add(panel5);
-
 		panel4 = new JPanel();
 		panel4.add(newVehicle);
 
@@ -150,9 +155,11 @@ public class FerryFrame extends JFrame implements ActionListener {
 
 			berths = Integer.parseInt(berthsChoice.getSelectedItem());
 
-			v = vc.createVehicle(checkboxes[0].isSelected()?VehicleTypes.car:VehicleTypes.truck,noPass, reg, berths );
+			v = vc.createVehicle(checkboxes,noPass, reg, berths,sidecar  );
 
             added = theFerry.addVehicle(v);
+
+
 
 
 
